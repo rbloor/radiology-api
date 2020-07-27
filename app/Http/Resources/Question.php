@@ -24,7 +24,6 @@ class Question extends JsonResource
             'type' => $this->type,
             'is_checked' => $this->is_checked,
             'answers' => AnswerResource::collection($this->answers),
-            'category_id' => $this->category_id,
             'category' => $this->category,
             'user_id' => $this->user_id,
             //'created_at' => $this->created_at,
