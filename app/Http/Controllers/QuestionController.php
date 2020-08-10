@@ -19,7 +19,7 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string'],
             'source' => ['required', 'string', 'max:255'],
             'type' => ['required', 'in:single,multiple'],
             'is_checked' => ['boolean'],
