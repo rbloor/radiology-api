@@ -12,7 +12,7 @@ class QuestionController extends Controller
 {
     public function index()
     {
-        $questions = Question::all();
+        $questions = Question::all()->shuffle();
         return QuestionResource::collection($questions);
     }
 

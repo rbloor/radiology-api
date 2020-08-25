@@ -20,6 +20,10 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    protected $appends = [
+        'unanswered_questions', 'questions_answered_wrong'
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -41,5 +45,20 @@ class User extends Authenticatable
     public function questions()
     {
         return $this->hasMany('App\Question', 'user_id');
+    }
+
+    public function submissions()
+    {
+        return $this->hasMany('App\Submission', 'user_id');
+    }
+
+    public function getUnansweredQuestionsAttribute() {
+        $current = $this->submissions->pluck('question.id');
+        return \App\Question::whereNotIn('id', $current)->get();
+    }
+
+    public function getQuestionsAnsweredWrongAttribute() {
+        $current = $this->submissions->where('is_correct', 0)->pluck('question.id');
+        return \App\Question::whereIn('id', $current)->pluck('id');
     }
 }

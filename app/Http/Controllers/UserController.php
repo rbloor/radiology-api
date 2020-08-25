@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use App\Http\Resources\User as UserResource;
 
 class UserController extends Controller
 {
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return new UserResource($user);
+    }
+
     public function login(Request $request)
     {
         $request->validate([

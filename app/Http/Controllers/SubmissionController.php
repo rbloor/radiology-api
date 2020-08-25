@@ -14,6 +14,15 @@ class SubmissionController extends Controller
         return SubmissionResource::collection($submissions);
     }
 
+    public function createOrUpdate(Request $request) 
+    {
+        $submissions = [];
+        foreach ($request->all() as $row) {
+            $submissions[] = Submission::updateOrCreate(['question_id' => $row['question_id'], 'user_id' => $row['user_id']], ['is_correct' => $row['is_correct']]);
+        }
+        return $submissions;
+    }
+
     public function store(Request $request)
     {
         $request->validate([

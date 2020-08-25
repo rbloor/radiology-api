@@ -12,7 +12,7 @@ class Question extends Model
     ];
 
     protected $appends = [
-        'short_title'
+        'short_name'
     ];
 
     protected $casts = [
@@ -32,6 +32,11 @@ class Question extends Model
     public function answers()
     {
         return $this->hasMany('App\Answer', 'question_id');
+    }
+
+    public function submissions()
+    {
+        return $this->hasMany('App\Submission', 'question_id');
     }
 
     public function getShortNameAttribute()

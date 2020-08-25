@@ -16,11 +16,12 @@ class Submission extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user' => $this->user_id,
-            'question' => $this->question,
+            //'user' => $this->user_id,
+            'question_id' => $this->question->id,
+            'category' => $this->question->category,
             'is_correct' => $this->is_correct,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            //'created_at' => $this->created_at,
+            //'updated_at' => $this->updated_at
         ];
     }
 }

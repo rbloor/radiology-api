@@ -202,5 +202,6 @@ class DatabaseSeeder extends Seeder
             new App\Answer(['name' => 'metastatic carcinoma', 'is_correct' => 1]),
         ]);
 
+        //$this->call(SubmissionsTableSeeder::class);
     }
 }
