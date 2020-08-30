@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public function getUnansweredQuestionsAttribute() {
         $current = $this->submissions->pluck('question.id');
-        return \App\Question::whereNotIn('id', $current)->get();
+        return \App\Question::whereNotIn('id', $current)->pluck('id');
     }
 
     public function getQuestionsAnsweredWrongAttribute() {
