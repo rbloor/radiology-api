@@ -24,6 +24,7 @@ Route::post('/logout', 'UserController@logout');
 Route::get('/user/{id}','UserController@show');
 
 Route::apiResource('category', 'CategoryController');
+Route::get('/question/shuffled','QuestionController@shuffled');
 Route::apiResource('question', 'QuestionController');
 Route::apiResource('answer', 'AnswerController');
 Route::post('/submission/createOrUpdate','SubmissionController@createOrUpdate');

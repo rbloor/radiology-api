@@ -12,6 +12,12 @@ class QuestionController extends Controller
 {
     public function index()
     {
+        $questions = Question::all();
+        return QuestionResource::collection($questions);
+    }
+
+    public function shuffled()
+    {
         $questions = Question::all()->shuffle();
         return QuestionResource::collection($questions);
     }
